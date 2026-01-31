@@ -60,3 +60,13 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
+
+
+## 🗄 Database
+- SQLite used for local development
+- PostgreSQL configuration prepared for production use
+
+## 🔒 Security Notes
+- Token-based authentication
+- Role-based permissions (admin-only delete)
+- Input validation at serializer level

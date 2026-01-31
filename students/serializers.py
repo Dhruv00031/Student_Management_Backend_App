@@ -2,6 +2,8 @@ from rest_framework import serializers
 from .models import Student
 
 class StudentSerializer(serializers.ModelSerializer):
+    name = serializers.CharField(allow_blank=False)
+    course = serializers.CharField(allow_blank=False)
 
     def validate_year(self, value):
         if value < 1 or value > 5:
