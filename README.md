@@ -70,3 +70,10 @@ python manage.py runserver
 - Token-based authentication
 - Role-based permissions (admin-only delete)
 - Input validation at serializer level
+
+## 🔄 API Versioning
+All endpoints are versioned to support future changes without breaking clients.
+
+Current version:
+- `/api/v1/`
+

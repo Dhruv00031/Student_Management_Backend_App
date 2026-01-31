@@ -1,6 +1,7 @@
-from rest_framework import generics, status
+from rest_framework import generics, status, filters
 from rest_framework.exceptions import NotFound, ValidationError
 from rest_framework.response import Response
+
 from .models import Student
 from .permissions import IsAdminOrReadOnly
 from .serializers import StudentSerializer
@@ -10,6 +11,14 @@ class StudentListCreateView(generics.ListCreateAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
     permission_classes = [IsAdminOrReadOnly]
+
+    filter_backends = [
+        filters.SearchFilter,
+        filters.OrderingFilter,
+    ]
+    search_fields = ['name', 'roll_number', 'email']
+    ordering_fields = ['name', 'year', 'created_at']
+    ordering = ['-created_at']
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -39,4 +48,3 @@ class StudentDetailView(generics.RetrieveUpdateDestroyAPIView):
         if not request.data:
             raise ValidationError("Request body cannot be empty")
         return super().update(request, *args, **kwargs)
-
