@@ -8,6 +8,10 @@ from .serializers import StudentSerializer
 
 
 class StudentListCreateView(generics.ListCreateAPIView):
+    """
+    Lists all students and allows authenticated users to create students.
+    Supports pagination, filtering, ordering, and search.
+    """
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
     permission_classes = [IsAdminOrReadOnly]

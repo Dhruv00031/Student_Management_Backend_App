@@ -77,3 +77,15 @@ All endpoints are versioned to support future changes without breaking clients.
 Current version:
 - `/api/v1/`
 
+## 🗄 Database Strategy
+- SQLite used for local development
+- PostgreSQL configuration prepared for production
+- Designed to switch databases without code changes
+
+## ✨ Key Backend Concepts Demonstrated
+- Token-based authentication
+- Role-based permissions
+- RESTful CRUD APIs
+- Serializer-level validation
+- Pagination, filtering, ordering, and search
+- API versioning
