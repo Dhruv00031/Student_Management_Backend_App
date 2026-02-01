@@ -1,7 +1,7 @@
 from rest_framework import generics, status, filters
 from rest_framework.exceptions import NotFound, ValidationError
 from rest_framework.response import Response
-
+from rest_framework.permissions import IsAuthenticated
 from .models import Student
 from .permissions import IsAdminOrReadOnly
 from .serializers import StudentSerializer
@@ -14,7 +14,7 @@ class StudentListCreateView(generics.ListCreateAPIView):
     """
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
-    permission_classes = [IsAdminOrReadOnly]
+    permission_classes = [IsAuthenticated, IsAdminOrReadOnly]
 
     filter_backends = [
         filters.SearchFilter,
